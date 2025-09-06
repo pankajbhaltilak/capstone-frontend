@@ -2,6 +2,10 @@ import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
+const authHeader = () => ({
+  headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
+});
+
 // Login API
 export const login = async (username, password) => {
   const response = await axios.post(`${BASE_URL}/auth/login/`, {
@@ -11,20 +15,14 @@ export const login = async (username, password) => {
   return response.data;
 };
 
-// Fetch sales API
-export const getSales = async (token, page = 1) => {
-  const response = await axios.get(`${BASE_URL}/sales/?page=${page}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const getSales = async (page = 1) => {
+  const response = await axios.get(
+    `${BASE_URL}/sales/?page=${page}`,
+    authHeader()
+  );
   return response.data;
 };
 
-// Attach JWT to requests
-const authHeader = () => ({
-  headers: { Authorization: `Bearer ${localStorage.getItem("access_token")}` },
-});
 
 // 🔹 KPIs
 export const getKPIs = () =>
@@ -65,3 +63,16 @@ export const registerUser = async (username, email, password) => {
   return response.data;
 };
 
+export const uploadCSV = (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  return axios
+    .post(`${BASE_URL}/upload-csv/`, formData, authHeader())
+    .then((res) => res.data);
+};
+
+export const getCsvLogs = () =>
+  axios
+    .get(`${BASE_URL}/csv-upload-logs`, authHeader())
+    .then((res) => res.data);

@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          Data Analytics Project
+          Amazon Sales Data Analysis
         </a>
         <button
           className="navbar-toggler"
@@ -17,11 +17,6 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link active" href="/">
-                Dashboard
-              </a>
-            </li>
             <li className="nav-item">
               <a
                 className="nav-link"

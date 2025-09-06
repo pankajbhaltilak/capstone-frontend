@@ -35,8 +35,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Navbar />
-
       <div className="container-fluid mt-4">
 
         {/* KPI Cards */}
