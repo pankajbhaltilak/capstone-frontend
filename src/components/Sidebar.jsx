@@ -8,7 +8,7 @@ const Sidebar = () => {
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: "bi bi-speedometer2" },
     { name: "CSV Upload", path: "/upload", icon: "bi bi-upload" },
-    { name: "Logs", path: "/logs", icon: "bi bi-journal-text" },
+    { name: "Data", path: "/logs", icon: "bi bi-journal-text" },
   ];
 
   return (
